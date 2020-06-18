@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <h1>Informacje o pacjencie:</h1>
+
+<tr th:each="pacjent: ${pacjenci}">
+    <td th:text="${pacjent.getImie()}"/>
+    <td th:text="${pacjent.getNazwisko()}"/>
+    <td th:text="${pacjent.getWaga()}"/>
+    <td th:text="${pacjent.getWzrost()}"/>
+    <td th:text="${pacjent.getChoroba()}"/><br>
+    <p>-------------------------------</p><br>
+</tr>
+<form th:action="@{/add-pacjent}" th:object="${nowyPacjent}" method="post">
+    <p>Imię:<input type="text" th:field="*{imie}"></p>
+    <p>Nazwisko:<input type="text" th:field="*{nazwisko}"></p>
+    <p>Wzrost:<input type="text" th:field="*{wzrost}"></p>
+    <p>Waga:<input type="text" th:field="*{waga}"></p>
+    <p>Choroba:<input type="text" th:field="*{choroba}"></p>
+    <p><input type="submit" value="DODAJ PACJENTA"></p>
+</form>
+
+</body>
+</html>
